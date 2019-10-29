@@ -1,0 +1,28 @@
+a <- 1
+b <- 1
+c<--1
+a
+b
+c
+ls()
+print(c)
+load("/Users/Santhanakrishnan/Documents/Programming/R/my-first-script.R")
+ls()
+q()
+load("/Users/Santhanakrishnan/Documents/Programming/R/my-first-script.R")
+ls()
+clr <- function() cat("\014")
+clr()
+aNUmber <- 1
+aString <- "Hello World!"
+ls()
+print(aString)
+aNumber
+aNumber <- 1
+aString <- "Hello World!"
+ls()
+class(aNumber)
+class(aString)
+print(aString)
+aString
+aNumber

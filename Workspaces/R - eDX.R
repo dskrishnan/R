@@ -1,4 +1,4 @@
-#********************** This file "Reference.R" is an R script.*******************************
+# ********************* This file "Reference.R" is an R script.*******************************
 # This is a comment.
 
 "
@@ -10,7 +10,7 @@ if(FALSE) {
       single OR double quote"
 }
 
-# In R Studio, Select a code block and press
+# In R Studio, Select a code-block and press
 # "Ctrl + Shift + C" to put '#' to do multi line comments.
 # Like this. It will automatically insert # infront of every line selected.
 
@@ -51,7 +51,7 @@ if(FALSE) {
  Anything that is stored in R is object. It could be data, functions or anything.
 "
 
-# A function to clear the working environment memory
+# Following is a function to clear the working environment memory
 rm(list=ls()) # This will remove all the previously declared/assigned objects(aka variables) from working memory.
 #rm(object1,object2,object3) #This is to remove multiple objects/variables
 #
@@ -61,6 +61,10 @@ clr <- function() cat("\014")
 # The above can be invoked as
 clr()
 
+# Here '=' as an assignment operator is preferred only inside functions. In other places '<-' is prefered as assignment operator.
+aNumber <- 1 # Here instead of '<-', we can use '=' as well. But '=' assignment operator can be used inside functions as well. But '<-' assignment cannot be used inside functions.
+aString <- "Hello World!" # To differentiate assignment operators inside  and outside function, It is recommend to avoid '=' outside of functions and use only '<-' operator.
+
 "
    In any programming language variables are nothing but reserved memory locations to store values.
    This means when a variable is created, some space is reserved in memory. We may like to store
@@ -68,9 +72,9 @@ clr()
    double floating point, Boolean etc. Based on the data type of a variable, the operating system 
    allocates memory and decides what can be stored in the reserved memory.
 
-   In contrast to other programming languages like C and java in R, the variables are not declared 
-   as some data type. The variables are assigned with R-Objects and the data type of the R-object 
-   becomes the data type of the variable. There are many types of R-objects. The frequently used
+   In contrast to other programming languages like C and java, variables are not declared 
+   as some data type in R. The variables are called as R-Objects. The datatype of R Object is called as Class. 
+   There are many types/class of R-objects. The frequently used
    used ones are,
       Vectors
       Lists
@@ -81,21 +85,43 @@ clr()
 The Simplest of these objects is the Vector Object and there are six types of these atomic vectors,
 also termed as six classes of vectors. The other R-Objects are built upon the atomic vectors
 "
-#Logical Object or Class or Datatype, Ex: TRUE, FALSE
+# Logical Vector(Object/Class/Datatype), Ex: TRUE, FALSE
 aLogicalObject <- FALSE
 class(aLogicalObject)
 
-#Numeric Object or Class or Datatype, Ex: 172.3, 72, 34
+# Numeric Vector(Object/Class/Datatype), Ex: 172.3, 72, 34
 aNumericObject <- 172.3
 class(aNumericObject)
 
-#Integer Object or Class or Datatype, Ex: 2L, 56L, 0L
+# Integer Vector(Object/Class/Datatype), Ex: 2L, 56L, 0L
 anIntegerObject <- 56L
 class(anIntegerObject)
 
+# Complex Vector(Object/Class/Datatype), Ex: 2+7i, 5+3i
+aComplexObject <- 2+3i
+class(aComplexObject)
 
-aNumber <- 1 # Here instead of '<-', we can use '=' as well. But '=' assignment operator can be used inside functions as well. But '<-' assignment cannot be used inside functions.
-aString <- "Hello World!" # To differentiate assignment operators inside  and outside function, It is recommend to avoid '=' outside of functions and use only '<-' operator.
+# Character Vector(Object/Class/Datatype), Ex: "a", "hello", "TRUE", "0.123"
+aCharacterObject <- "Good Day" # Enclosed within Double Quotes
+class(aCharacterObject)
+anotherCharacterObject <- 'Another Good Day' # Enclosed with in Double Quotes
+class(anotherCharacterObject)
+
+# Raw Vector(Object/Class/Datatype)
+aStringObject <- 'Hello'
+aRawObject <- charToRaw(aStringObject)
+class(aRawObject)
+print(aRawObject) # The character 'Hello' is stored as '48 65 6c 6c 6f'
+print(rawToChar(aRawObject)) # This will print the original String
+is.raw(aRawObject) # Answer is TRUE
+is.raw(aStringObject) # Answer is FALSE
+
+"
+ In R Programming, the basic data types are the R objects called vectors which hold the elements
+ of different classes. In R the number of classes is not confined only to the above types.
+ For example we can use many atomic vectors and create an array whose class will become array.
+"
+
 # As we're changing objects in the console, we're also changing the workspace.
 
 #*** A Sample arithmatic - Quadratic formula

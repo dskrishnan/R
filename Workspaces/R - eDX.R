@@ -57,7 +57,7 @@ rm(list=ls()) # This will remove all the previously declared/assigned objects(ak
 #
 
 # A function to clear the console can be defined as
-clr <- function() cat("\014")
+clr <- function() cat("\014") # Cat -> Concatenate and Print
 # The above can be invoked as
 clr()
 
@@ -85,6 +85,7 @@ aString <- "Hello World!" # To differentiate assignment operators inside  and ou
 The Simplest of these objects is the Vector Object and there are six types of these atomic vectors,
 also termed as six classes of vectors. The other R-Objects are built upon the atomic vectors
 "
+
 # Logical Vector(Object/Class/Datatype), Ex: TRUE, FALSE
 aLogicalObject <- FALSE
 class(aLogicalObject)
@@ -122,7 +123,46 @@ is.raw(aStringObject) # Answer is FALSE
  For example we can use many atomic vectors and create an array whose class will become array.
 "
 
-# As we're changing objects in the console, we're also changing the workspace.
+"
+A Vector is what is called an array in all other programming languages except R. Vector is 
+a basic data structure in R. It contains elements of same type. The data types can be logical,
+Integer, double, character, complex or raw. Vector's type can be checked using typeof() function.
+
+To create a vector with more than one element, the function c() should be used. The default
+method combines its arguments to form a vector. All Arguments are coerced to a common type
+which is the type of the returned value, and all attributes except names are removed.
+"
+
+apple <- c("red", "green", "yellow") # This is a vector with 3 elements
+print(apple) # This will display/print the vector elemens to the console.
+class(apple) # Class of this vector would be Character.
+oddNumbersVectorArray <- c(1,3,5,7,9)
+class(oddNumbersVectorArray)# Class of this vector would be numeric.
+mixedVectorArray <- c(2,4,6,8,"ABCD")
+class(mixedVectorArray) #Class of this vector would be Character.
+#
+
+"
+Lists: A list is an R Object which can contain many types of elements inside it like vectors, functions and even another list.
+List Size can be increased on the fly. List contents can be accessed either by index or by name
+"
+list1 <- list(c(1,2,3), 35.8, sin,100) # Creating a list.
+list2 <- list(oddVector=c(9,7,5,3,1),func=sin, string="Hello World")
+class(list1) # Class of a list would be 'list'.
+list1[2] # This will show 35.8
+list2$string # This will show "Hello World"
+
+"
+Matrices: A Matrix is a two dimensional rectangular data set. It can be created using a vector input to the Matrix function.
+Matrix is a two dimenstional vector(fixed size, all cell types same).
+"
+vectorIn <- c(1,2,3,'a','b','c','x','y','x') #Create a vector
+vectorIn # This will not be in matrix form, but in an array form.
+matrixOut <- matrix(vectorInput, nrow = 3, ncol=3, byrow = TRUE) #Creating a Matrix
+matrixOut # It does print(M)
+class(matrixOut) # Class of a list would be list.
+
+# Arrays:
 
 #*** A Sample arithmatic - Quadratic formula
 a <- 1
@@ -151,6 +191,8 @@ are already installed have to be loaded explicitly to be used by the R program t
 going to use them. To actually use the package use the command "library(package)" which 
 makes that package available to you. Then just call the appropriate package functions etc.
 "
+# As we're changing objects in the console, we're also changing the workspace.
+
 .libPaths() # This gives the library locations containing R Packages.
 
 #There are several datasets that are included in R for users to pratice and test out functions. 

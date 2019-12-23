@@ -1,18 +1,18 @@
-# ********************* This file "Reference.R" is an R script.*******************************
+# ********************* This file "R - eDX.R" is an R script.*******************************
 # This is a comment.
 
 "
  This is also a comment. 
  Used for multi-line comment.
 "
+
 if(FALSE) {
    "This is a demo for multi-line comments and it should be put inside either a 
       single OR double quote"
 }
 
-# In R Studio, Select a code-block and press
-# "Ctrl + Shift + C" to put '#' to do multi line comments.
-# Like this. It will automatically insert # infront of every line selected.
+# In R Studio, Select a code-block and press "Ctrl + Shift + C" to put '#' to apply
+#  multi line comments like this. It will automatically insert # infront of every line selected.
 
 "
 ‘R’ is an Interpreted, Single Threaded & Open Source programming Language for Statistical Computations,
@@ -21,9 +21,7 @@ if(FALSE) {
  Interactivity is essential for data science. Though `R` is being interactive, we can save our work as scripts
  and be executed any moment. These saved R scripts serve as a record of analysis performed, a key feature that
  facilitates reproducible work.
-"
-
-"
+ 
  Why R?
    Specificity towards Data Science:
      All R libraries focus on making one thing certain - Making data analysis easier.
@@ -47,23 +45,21 @@ if(FALSE) {
  machine dependent. Only R Scripts are platform independent. As a beginner it is OK to consider
  the R workspace as real. But it is recommended to consider R Scripts as real. With input data &
  R scripts we can reproduce everything in any machine.
+ 
+ R is a case sensitive language. i.e. TRUE & True are not same.
 
  Anything that is stored in R is object. It could be data, functions or anything.
 "
 
-# Following is a function to clear the working environment memory
+# Following is a function to clear the working environment memory completely.
 rm(list=ls()) # This will remove all the previously declared/assigned objects(aka variables) from working memory.
-#rm(object1,object2,object3) #This is to remove multiple objects/variables
-#
+# rm(object1,object2,object3) # This is to remove multiple objects/variables.
 
-# A function to clear the console can be defined as
-clr <- function() cat("\014") # Cat -> Concatenate and Print
+# Following is a function to clear the console
+clr <- function() cat("\014") # Cat -> Concatenate and Print. Here '<-' is prefered as assignment operator. 
 # The above can be invoked as
 clr()
-
-# Here '=' as an assignment operator is preferred only inside functions. In other places '<-' is prefered as assignment operator.
-aNumber <- 1 # Here instead of '<-', we can use '=' as well. But '=' assignment operator can be used inside functions as well. But '<-' assignment cannot be used inside functions.
-aString <- "Hello World!" # To differentiate assignment operators inside  and outside function, It is recommend to avoid '=' outside of functions and use only '<-' operator.
+# Both '<-' & '=' can be used as assignment operator. However inside functions, only '=' is permitted as assignment operator.
 
 "
    In any programming language variables are nothing but reserved memory locations to store values.
@@ -85,6 +81,56 @@ aString <- "Hello World!" # To differentiate assignment operators inside  and ou
 The Simplest of these objects is the Vector Object and there are six types of these atomic vectors,
 also termed as six classes of vectors. The other R-Objects are built upon the atomic vectors
 "
+
+# Rules for declarating Varibles/Objects
+"
+      1. Variables can be combination of letters, digits, period(.), underscore(_).
+      2. It must start with a letter or period. If it starts with period, it cannot be
+         followed by a digit.
+      3. reserved words cannot be used.
+      4. Examples: total, sum, .fine.with.dot, this_is_acceptable, Number5.
+      5. These are wrong: tot@l, 5um, TRUE, .0ne
+   
+
+Note: Earlier versions of R used underscore(_) as assignment operator. So, the period(.) was used extensively
+in variable names having multiple words.
+
+Current versions of R support underscore as a valid identifier, but it is a good practice to use period
+as word Separators.
+
+For example, a.variable.name is preferred over a_variable_name or alternatively we could use
+camel case as aVariableName.
+
+Constants in R
+   
+   Numeric Constants are,
+      integer: This is followed by 'L'. Ex. 5L -> typeof(5L) would be integer.
+      double:  Ex. 5 -> typeof(5) would be 'double'
+      complex: Ex. 5i -> typeof(5i) would be 'complex'
+   
+   Numeric constants preceded by 0x or 0X are interpreted as hexadecimal numbers.
+      Ex. 0xff will give 255 in console
+      0XF + 1 will give 16 in console
+      
+   Character Constants:
+      They are represented using either single quotes '' or double qoutes "" as delimiters.
+      #Ex. 'example' -> typeof('example') would be "character".
+   
+   Built-in Constants:
+      Some of the built in Constants are
+         #LETTERS: This means "A" "B" "C" "D" "E" "F"......X" "Y" "Z"
+         #letters: This means "a" "b" "c" "d" "e"...."x" "y" "z"
+         #pi : This means 3.141593
+         #month.name: This means "January"   "February"  "March"..."October"   "November"  "December"
+         #month.abb: This means "Jan" "Feb" "Mar"..."Oct" "Nov" "Dec"
+      But it is not good do rely on these built in constants, because these values can be changed
+      For example pi <- 56 would force the value of pi from 3.141593 to 56.
+"
+
+# R Operators
+
+
+
 
 # Logical Vector(Object/Class/Datatype), Ex: TRUE, FALSE
 aLogicalObject <- FALSE
@@ -131,16 +177,29 @@ Integer, double, character, complex or raw. Vector's type can be checked using t
 To create a vector with more than one element, the function c() should be used. The default
 method combines its arguments to form a vector. All Arguments are coerced to a common type
 which is the type of the returned value, and all attributes except names are removed.
+
 "
 
-apple <- c("red", "green", "yellow") # This is a vector with 3 elements
-print(apple) # This will display/print the vector elemens to the console.
-class(apple) # Class of this vector would be Character.
+color1 <- c("red", "green", "yellow") # This is a vector with 3 elements
+color1 # It does print(color1)
+class(color1) # Class of this vector would be Character.
 oddNumbersVectorArray <- c(1,3,5,7,9)
 class(oddNumbersVectorArray)# Class of this vector would be numeric.
 mixedVectorArray <- c(2,4,6,8,"ABCD")
 class(mixedVectorArray) #Class of this vector would be Character.
-#
+
+multiVector <- c(aRawObject, aStringObject, aComplexObject, anIntegerObject, aNumericObject, aLogicalObject)
+
+"
+ Since, a vector must have elements of same type, this function c() will try and coerce 
+ elments to same type, if they're different.
+ 
+ Coercion is from lower to higher types from logical to integer to double to character
+   raw < logical < integer < double < complex < character < list
+"
+#Thus
+
+
 
 "
 Lists: A list is an R Object which can contain many types of elements inside it like vectors, functions and even another list.

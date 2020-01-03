@@ -58,7 +58,7 @@ rm(list=ls()) # This will remove all the previously declared/assigned objects(ak
 # Following is a function to clear the console
 clr <- function() cat("\014") # Cat -> Concatenate and Print. Here '<-' is prefered as assignment operator. 
 # The above can be invoked as
-clr()
+clr() #Instead of this '^L' can be used in the console to clear it. Or use the Brush icon on the top right of the console.
 # 
 
 # Assignment Operators:
@@ -297,6 +297,69 @@ xElementORy <- x|y #This is element wise Logical OR producing result having leng
 xLogicalORy <- x||y # This is Logical OR. This Examines only the first element of the Operands resulting into Single length Logical Vector. Result will be 'TRUE'.
 
 # R Flow Control
+
+# Simple If
+x <- 5
+if (x > 0) {
+   cat("Positive Number : ", x)
+}
+
+# If Else
+x <- x * -1
+if (x > 0) {
+   cat ("Postive Number : ", x)
+} else {
+   cat ("Negative Number : ", x)
+}
+
+# The above can be written in a single line as follows
+if (x > 0) cat("Positive Number : ",x) else cat("Negative Number : ",x)
+
+# Even the result can be assigned to a variale in Single line.
+y <- if(x > 0) "Positive" else "Negative" # y will be Negative
+
+# if else ladder
+
+if(x > 0) {
+   cat("Positive Number : ",x)
+} else if(x == 0) {
+   cat("Zero : ",x)
+} else {
+   cat("Negative Number : ",x)
+}
+
+#ifelse function: Here the test expression must be a logical vector(Or an object that can be coerced to logical).
+x <- c(5,7,2,9)
+ifelse(x%%2 ==0,"Even","Odd")
+
+# For Loop
+#How to check the number of even numbers in a Vector?
+
+inputVector <- c(2,5,3,9,8,11,6)
+evenElements <- c()
+oddElements <- c()
+numberOfEvenElements <- 0
+numberOfOddElements <- 0
+
+evenIndex <- 0
+oddIndex <- 0
+
+for (element in inputVector) {
+   #cat("Element in Input Vector is : ",element,"\n")
+   if(element %% 2 == 0) {
+      numberOfEvenElements <- numberOfEvenElements + 1
+      evenIndex <- evenIndex + 1
+      evenElements[evenIndex] <- element
+   } else {
+      numberOfOddElements <- numberOfOddElements + 1
+      oddIndex <- oddIndex + 1
+      oddElements[oddIndex] <- element
+   }
+}
+
+resultVector <- c("Even Elements"=numberOfEvenElements,"Odd Elements"=numberOfOddElements,"evenElements"=evenElements,"oddElements"=oddElements)
+
+
 
 "
    Lists: A list is an R Object which can contain many types of elements inside it like vectors, 
